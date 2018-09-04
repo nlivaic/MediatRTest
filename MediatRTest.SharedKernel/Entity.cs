@@ -4,7 +4,7 @@ using MediatRTest.SharedKernel.Interfaces;
 
 namespace MediatRTest.SharedKernel
 {
-    public abstract class Entity<TId>
+    public abstract class Entity<TId> : IEntity
     {
         private readonly IList<IDomainEvent> _domainEvents;
         public IEnumerable<IDomainEvent> DomainEvents => _domainEvents;

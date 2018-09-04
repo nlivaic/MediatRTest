@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-// using MediatR;
+using MediatR;
 using MediatRTest.Infrastructure;
 using MediatRTest.Logic;
+using MediatRTest.SharedKernel;
 using MediatRTest.SharedKernel.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,7 +21,8 @@ namespace MediatRTest.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            // services.AddMediatR(typeof(AppointmentScheduledHandler).Assembly);      // Handlers are in other assemblies, this is the way to add these assemblies.
+            services.AddMediatR(typeof(AppointmentScheduledHandler).Assembly);      // Handlers are in other assemblies, this is the way to add these assemblies.
+            services.AddSingleton<DomainEventsDispatcher, DomainEventsDispatcher>();
             services.AddTransient<AppointmentContext, AppointmentContext>();
             services.AddTransient<AppointmentRepository, AppointmentRepository>();
             services.AddTransient<IEventHandler<AppointmentScheduled>, AppointmentScheduledHandler>();

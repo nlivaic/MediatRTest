@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Linq;
 using MediatRTest.Logic;
+using MediatRTest.SharedKernel;
+using MediatRTest.SharedKernel.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace MediatRTest.Infrastructure
 {
-    public class AppointmentContext : DbContext
+    public class AppointmentContext : BaseDispatchContext
     {
         public DbSet<Appointment> Appointments { get; set; }
 
+        public AppointmentContext(DomainEventsDispatcher domainEventsDispatcher) : base(domainEventsDispatcher) { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
