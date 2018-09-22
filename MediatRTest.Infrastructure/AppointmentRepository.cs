@@ -8,7 +8,7 @@ namespace MediatRTest.Infrastructure
         public AppointmentRepository(AppointmentContext context)
         {
             _context = context;
-        }
+        }   
         public void Update(Appointment appointment)
         {
             _context.Add(appointment);

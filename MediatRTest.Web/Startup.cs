@@ -22,6 +22,7 @@ namespace MediatRTest.Web
         {
             services.AddMvc();
             services.AddMediatR(typeof(AppointmentScheduledHandler).Assembly);      // Handlers are in other assemblies, this is the way to add these assemblies.
+            services.AddMediatR(typeof(AppointmentConfirmedHandler).Assembly);
             services.AddScoped<DomainEventsDispatcher, DomainEventsDispatcher>();
             services.AddTransient<AppointmentContext, AppointmentContext>();
             services.AddTransient<AppointmentRepository, AppointmentRepository>();

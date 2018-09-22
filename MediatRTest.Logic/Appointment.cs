@@ -15,7 +15,13 @@ namespace MediatRTest.Logic
         }
         public void Schedule()
         {
-            AddDomainEvent(new AppointmentScheduled("A message describing the event."));
+            AddDomainEvent(new AppointmentScheduled("A message describing the scheduling event."));
         }
+        public void Confirm()
+        {
+            AddDomainEvent(new AppointmentConfirmed("A message describing the confirming event."));
+        }
+
+
     }
 }

@@ -18,7 +18,8 @@ namespace MediatRTest.Web.Controllers
         public IActionResult Index()
         {
             Appointment appointment = new Appointment();
-            appointment.Schedule();
+            //appointment.Schedule();
+            appointment.Confirm();
             _repo.Update(appointment);
             return View();
         }
